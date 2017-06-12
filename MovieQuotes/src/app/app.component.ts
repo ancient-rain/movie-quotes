@@ -17,6 +17,11 @@ export class AppComponent {
   };
 
   onSubmit(): void {
-    console.log('You wish to submit:', this.movieQuote);
+    console.log('TODO submit:', this.movieQuote);
+
+    this.movieQuote = {
+      'quote': '',
+      'movie': ''
+    }
   }
 }
