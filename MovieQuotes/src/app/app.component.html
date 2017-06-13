@@ -32,7 +32,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let movieQuote of movieQuotesStream | async">
+      <tr *ngFor="let movieQuote of (movieQuotesStream | async) | reverse">
         <th>{{movieQuote.quote}}</th>
         <th>{{movieQuote.movie}}</th>
       </tr>
