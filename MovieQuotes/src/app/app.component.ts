@@ -21,13 +21,6 @@ export class AppComponent {
     'movie': '',
   };
 
-  // movieQuotes: MovieQuote[] = [
-  //   {"movie": "Rocky", "quote": "Yo Adrian"},
-  //   {"movie": "Terminator", "quote": "I'll be back"},
-  //   {"movie": "Titanic", "quote": "I'm the king of the world!"},
-  //   {"movie": "The Princess Bride", "quote": "Hello. My name is Inigo Montoya. You killed my father. Prepare to die."}
-  // ];
-
   movieQuotesStream: FirebaseListObservable<MovieQuote[]>;
 
   constructor(db: AngularFireDatabase) {
@@ -35,8 +28,6 @@ export class AppComponent {
   }
 
   onSubmit(): void {
-    // Local only solution
-    // this.movieQuotesStream.unshift(this.formMovieQuote);
     try {
       if (this.formMovieQuote.$key) {
         this.movieQuotesStream.update(this.formMovieQuote.$key, this.formMovieQuote)
@@ -53,9 +44,7 @@ export class AppComponent {
     }
   }
 
-  edit(movieQuote: MovieQuote) : void {
-    // console.log('Edit: ', movieQuote);
-
+  edit(movieQuote: MovieQuote): void {
     this.formMovieQuote = movieQuote;
   }
 
