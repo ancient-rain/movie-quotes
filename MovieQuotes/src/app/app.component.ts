@@ -38,7 +38,11 @@ export class AppComponent {
     // Local only solution
     // this.movieQuotesStream.unshift(this.formMovieQuote);
     try {
-      this.movieQuotesStream.push(this.formMovieQuote);
+      if (this.formMovieQuote.$key) {
+        this.movieQuotesStream.update(this.formMovieQuote.$key, this.formMovieQuote)
+      } else {
+        this.movieQuotesStream.push(this.formMovieQuote);
+      }
 
       this.formMovieQuote = {
         'quote': '',
@@ -47,5 +51,15 @@ export class AppComponent {
     } catch (e) {
       console.log('Form error:', e);
     }
+  }
+
+  edit(movieQuote: MovieQuote) : void {
+    // console.log('Edit: ', movieQuote);
+
+    this.formMovieQuote = movieQuote;
+  }
+
+  remove(movieQuoteKey: string): void {
+    this.movieQuotesStream.remove(movieQuoteKey);
   }
 }
